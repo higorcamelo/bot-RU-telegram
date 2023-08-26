@@ -1,22 +1,28 @@
-import pandas as pd
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.firefox.options import Options
 from datetime import datetime
 
 url = 'https://www.ufc.br/restaurante/cardapio/5-restaurante-universitario-de-quixada/'
-driver_path = '/caminho/para/geckodriver'
 
 def acesso_site():
-    data_temp = datetime.now()
-    data_hoje = data_temp.strftime('%Y-%m-%d')
     option = Options()
-    option.headless = True
-    driver = webdriver.Firefox(executable_path="geckodriver")
-    driver.get(url + data_hoje)
+    option.add_argument('-headless') 
+    driver = webdriver.Firefox() #Adicionar options depois
+    driver.get(url+ '2023-08-28') #Data teste
     
-    #soup = BeautifulSoup(driver.page_source, 'html.parser')
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    tabela_almoco = soup.find('table', class_='refeicao almoco')
+    tabela_jantar = soup.find('table', class_='refeicao jantar')
+    for linhas in tabela_almoco.find_all('tr'):
+        celulas= linhas.find_all('td')
+        if celulas:
+            for celula in celulas:
+                print(celula.text)
         
-    #driver.quit()
+    driver.quit()
+    
+def criar_mensagem(almoco, jantar):
+    pass
 
 acesso_site()
