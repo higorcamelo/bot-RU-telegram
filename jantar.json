@@ -1,0 +1,67 @@
+{
+    "Principal": [
+        {
+            "itens": [
+                "Carne ao molho madeira",
+                "isca de frango acebolada"
+            ],
+            "contem_gluten": false,
+            "contem_lactose": false
+        }
+    ],
+    "Vegetariano": [
+        {
+            "itens": [
+                "Omelete de linhaça",
+                ""
+            ],
+            "contem_gluten": false,
+            "contem_lactose": false
+        }
+    ],
+    "Salada": [
+        {
+            "itens": [
+                "acelga, alface, e cenoura"
+            ],
+            "contem_gluten": false,
+            "contem_lactose": false
+        }
+    ],
+    "Guarnição": [
+        {
+            "itens": [
+                "Cuscuz (Contém Lactose)"
+            ],
+            "contem_gluten": false,
+            "contem_lactose": false
+        }
+    ],
+    "Acompanhamento": [
+        {
+            "itens": [
+                "Arroz brancoArroz integralFeijão carioca"
+            ],
+            "contem_gluten": false,
+            "contem_lactose": false
+        }
+    ],
+    "Suco": [
+        {
+            "itens": [
+                "Acerola"
+            ],
+            "contem_gluten": false,
+            "contem_lactose": false
+        }
+    ],
+    "Sobremesa": [
+        {
+            "itens": [
+                "DoceMamão"
+            ],
+            "contem_gluten": false,
+            "contem_lactose": false
+        }
+    ]
+}
