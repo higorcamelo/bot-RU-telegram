@@ -1,67 +1,37 @@
 {
     "Principal": [
         {
-            "itens": [
-                "Isca suína aceboladaCreme de galinha (Contém Lactose)"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Isca suína aceboladaCreme de galinha (Contém Lactose)"
         }
     ],
     "Vegetariano": [
         {
-            "itens": [
-                "Quibe de soja de forno",
-                ""
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Quibe de soja de forno (Contém Glúten)"
         }
     ],
     "Salada": [
         {
-            "itens": [
-                "repolho, cenoura, abacaxi"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "repolho, cenoura, abacaxi"
         }
     ],
     "Guarnição": [
         {
-            "itens": [
-                "macarrão parafuso",
-                ""
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "macarrão parafuso (Contém Glúten)"
         }
     ],
     "Acompanhamento": [
         {
-            "itens": [
-                "Arroz brancoArroz integralFeijão fradinho"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Arroz brancoArroz integralFeijão fradinho"
         }
     ],
     "Suco": [
         {
-            "itens": [
-                "Goiaba"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Goiaba"
         }
     ],
     "Sobremesa": [
         {
-            "itens": [
-                "DoceMelão"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "DoceMelão"
         }
     ]
 }

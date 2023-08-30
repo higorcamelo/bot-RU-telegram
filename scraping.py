@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.firefox.options import Options
 from datetime import datetime
 import json
+import re
 
 url = 'https://www.ufc.br/restaurante/cardapio/5-restaurante-universitario-de-quixada/'
 
@@ -28,38 +29,19 @@ def para_json(tabela):
         if celulas and len(celulas) == 2:
             categoria = celulas[0].text.strip()
             item = celulas[1].text.strip()
-            
-            # Dividir a string de itens em uma lista
-            itens = item.split(" (Contém Glúten)")  # ou qualquer outro critério de separação
 
-            # Detectar a presença de glúten e lactose
-            contem_gluten = detecta_gluten(item)
-            contem_lactose = detecta_lactose(item)
 
             # Se a categoria mudou, criar uma nova lista
             if categoria != categoria_atual:
                 data[categoria] = []
 
             data[categoria].append({
-                "itens": itens,
-                "contem_gluten": contem_gluten,
-                "contem_lactose": contem_lactose
+                "itens": item
             })
 
             categoria_atual = categoria
-            #TODO: Decidir sobre existencia ou não de emojis
-            #TODO: Corrigir formatação do JSON
     
     return json.dumps(data, ensure_ascii=False, indent=4)
-
-
-def detecta_gluten(texto):
-    texto_sem_gluten = texto.replace("(Contém Glúten)", "").strip()
-    return "Glúten" in texto_sem_gluten
-
-def detecta_lactose(texto):
-    texto_sem_lactose = texto.replace("(Contém Lactose)", "").strip()
-    return "Lactose" in texto_sem_lactose
     
 def criar_mensagem(almoco):
     if almoco == True:

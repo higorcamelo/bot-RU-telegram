@@ -1,67 +1,37 @@
 {
     "Principal": [
         {
-            "itens": [
-                "Carne ao molho madeira",
-                "isca de frango acebolada"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Carne ao molho madeira (Contém Glúten)isca de frango acebolada"
         }
     ],
     "Vegetariano": [
         {
-            "itens": [
-                "Omelete de linhaça",
-                ""
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Omelete de linhaça (Contém Glúten)"
         }
     ],
     "Salada": [
         {
-            "itens": [
-                "acelga, alface, e cenoura"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "acelga, alface, e cenoura"
         }
     ],
     "Guarnição": [
         {
-            "itens": [
-                "Cuscuz (Contém Lactose)"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Cuscuz (Contém Lactose)"
         }
     ],
     "Acompanhamento": [
         {
-            "itens": [
-                "Arroz brancoArroz integralFeijão carioca"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Arroz brancoArroz integralFeijão carioca"
         }
     ],
     "Suco": [
         {
-            "itens": [
-                "Acerola"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "Acerola"
         }
     ],
     "Sobremesa": [
         {
-            "itens": [
-                "DoceMamão"
-            ],
-            "contem_gluten": false,
-            "contem_lactose": false
+            "itens": "DoceMamão"
         }
     ]
 }
