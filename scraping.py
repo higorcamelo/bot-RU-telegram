@@ -13,51 +13,44 @@ def acesso_site():
     driver = webdriver.Firefox() #Adicionar options depois
     driver.get(url+ '2023-08-28') #Data teste
     
+    # Aguarde o carregamento dinâmico (ajuste o tempo conforme necessário)
+    driver.implicitly_wait(10)  # Espera até 10 segundos
+    
     soup = BeautifulSoup(driver.page_source, 'html.parser')
     tabela_almoco = soup.find('table', class_='refeicao almoco')
     tabela_jantar = soup.find('table', class_='refeicao jantar')
-        
+    
     driver.quit()
     return tabela_almoco, tabela_jantar
     
 def para_json(tabela):
-    data = {}  # Dicionário para armazenar os dados
-    categoria_atual = None
-
-    for linhas in tabela.find_all('tr'):
-        celulas = linhas.find_all('td')
-        if celulas and len(celulas) == 2:
-            categoria = celulas[0].text.strip()
-            item = celulas[1].text.strip()
-
-
-            # Se a categoria mudou, criar uma nova lista
-            if categoria != categoria_atual:
-                data[categoria] = []
-
-            data[categoria].append({
-                "itens": item
-            })
-
-            categoria_atual = categoria
+    rows = tabela.find_all('tr', class_='item')
+     
+    categorias = {
+        'Principal': [],
+        'Vegetariano': [],
+        'Salada': [],
+        'Guarnição': [],
+        'Acompanhamento': [],
+        'Suco': [],
+        'Sobremesa': []
+    }
     
-    return json.dumps(data, ensure_ascii=False, indent=4)
+    for linha in rows:
+        cols = linha.find_all('td')
+        if cols:
+            categoria = cols[0].get_text(strip=True)
+            itens = [col.find('span', class_='desc').get_text(strip=True) for col in cols[1:] if col.find('span', class_='desc')]
+            categorias[categoria].append(itens)
     
-def criar_mensagem(almoco):
-    if almoco == True:
-        saudacao = 'Bom dia'
-    else:
-        saudacao = 'Boa tarde'
-    pass
+    return categorias
 
 tabela_almoco, tabela_jantar = acesso_site()
-json_almoco = para_json(tabela_almoco)
-json_jantar = para_json(tabela_jantar)
+almoco_json = para_json(tabela_almoco)
+jantar_json = para_json(tabela_jantar)
 
-print('---Almoço---')
 with open('almoco.json', 'w', encoding='utf-8') as arquivo_almoco:
-    arquivo_almoco.write(json_almoco)
+    json.dump(almoco_json, arquivo_almoco, indent=4, ensure_ascii=False)
 
-print('---Jantar---')
 with open('jantar.json', 'w', encoding='utf-8') as arquivo_jantar:
-    arquivo_jantar.write(json_jantar)
+    json.dump(jantar_json, arquivo_jantar, indent=4, ensure_ascii=False)

@@ -1,37 +1,37 @@
 {
     "Principal": [
-        {
-            "itens": "Isca suína aceboladaCreme de galinha (Contém Lactose)"
-        }
+        [
+            "Isca suína acebolada"
+        ]
     ],
     "Vegetariano": [
-        {
-            "itens": "Quibe de soja de forno (Contém Glúten)"
-        }
+        [
+            "Quibe de soja de forno"
+        ]
     ],
     "Salada": [
-        {
-            "itens": "repolho, cenoura, abacaxi"
-        }
+        [
+            "repolho, cenoura, abacaxi"
+        ]
     ],
     "Guarnição": [
-        {
-            "itens": "macarrão parafuso (Contém Glúten)"
-        }
+        [
+            "macarrão parafuso"
+        ]
     ],
     "Acompanhamento": [
-        {
-            "itens": "Arroz brancoArroz integralFeijão fradinho"
-        }
+        [
+            "Arroz branco"
+        ]
     ],
     "Suco": [
-        {
-            "itens": "Goiaba"
-        }
+        [
+            "Goiaba"
+        ]
     ],
     "Sobremesa": [
-        {
-            "itens": "DoceMelão"
-        }
+        [
+            "Doce"
+        ]
     ]
 }

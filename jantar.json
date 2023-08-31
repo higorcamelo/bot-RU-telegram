@@ -1,37 +1,37 @@
 {
     "Principal": [
-        {
-            "itens": "Carne ao molho madeira (Contém Glúten)isca de frango acebolada"
-        }
+        [
+            "Carne ao molho madeira"
+        ]
     ],
     "Vegetariano": [
-        {
-            "itens": "Omelete de linhaça (Contém Glúten)"
-        }
+        [
+            "Omelete de linhaça"
+        ]
     ],
     "Salada": [
-        {
-            "itens": "acelga, alface, e cenoura"
-        }
+        [
+            "acelga, alface, e cenoura"
+        ]
     ],
     "Guarnição": [
-        {
-            "itens": "Cuscuz (Contém Lactose)"
-        }
+        [
+            "Cuscuz"
+        ]
     ],
     "Acompanhamento": [
-        {
-            "itens": "Arroz brancoArroz integralFeijão carioca"
-        }
+        [
+            "Arroz branco"
+        ]
     ],
     "Suco": [
-        {
-            "itens": "Acerola"
-        }
+        [
+            "Acerola"
+        ]
     ],
     "Sobremesa": [
-        {
-            "itens": "DoceMamão"
-        }
+        [
+            "Doce"
+        ]
     ]
 }
