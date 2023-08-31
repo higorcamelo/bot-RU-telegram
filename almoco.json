@@ -1,37 +1,30 @@
 {
     "Principal": [
-        [
-            "Isca suína acebolada"
-        ]
+        "Isca suína acebolada",
+        "Creme de galinha",
+        "(Contém Lactose)"
     ],
     "Vegetariano": [
-        [
-            "Quibe de soja de forno"
-        ]
+        "Quibe de soja de forno",
+        "(Contém Glúten)"
     ],
     "Salada": [
-        [
-            "repolho, cenoura, abacaxi"
-        ]
+        "repolho, cenoura, abacaxi"
     ],
     "Guarnição": [
-        [
-            "macarrão parafuso"
-        ]
+        "macarrão parafuso",
+        "(Contém Glúten)"
     ],
     "Acompanhamento": [
-        [
-            "Arroz branco"
-        ]
+        "Arroz branco",
+        "Arroz integral",
+        "Feijão fradinho"
     ],
     "Suco": [
-        [
-            "Goiaba"
-        ]
+        "Goiaba"
     ],
     "Sobremesa": [
-        [
-            "Doce"
-        ]
+        "Doce",
+        "Melão"
     ]
 }

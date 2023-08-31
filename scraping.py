@@ -40,8 +40,8 @@ def para_json(tabela):
         cols = linha.find_all('td')
         if cols:
             categoria = cols[0].get_text(strip=True)
-            itens = [col.find('span', class_='desc').get_text(strip=True) for col in cols[1:] if col.find('span', class_='desc')]
-            categorias[categoria].append(itens)
+            itens = [desc.get_text(strip=True) for col in cols[1:] for desc in col.find_all('span', class_='desc')]
+            categorias[categoria].extend(itens)
     
     return categorias
 
