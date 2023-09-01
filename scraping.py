@@ -45,6 +45,14 @@ def para_json(tabela):
     
     return categorias
 
+def montar_mensagem(almoco):
+    if almoco == True:
+        mensagem_cardapio = 'Bom dia, alunos'
+    else:
+        mensagem_cardapio = 'Boa tarde, alunos'
+        
+    return mensagem_cardapio
+
 tabela_almoco, tabela_jantar = acesso_site()
 almoco_json = para_json(tabela_almoco)
 jantar_json = para_json(tabela_jantar)
