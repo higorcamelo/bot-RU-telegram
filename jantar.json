@@ -1,30 +1,27 @@
 {
     "Principal": [
-        "Carne ao molho madeira",
-        "(Contém Glúten)",
-        "isca de frango acebolada"
+        "Suíno ao molho barbecue ",
+        "Frango grelhado "
     ],
     "Vegetariano": [
-        "Omelete de linhaça",
-        "(Contém Glúten)"
+        "Fricassê de lentilha "
     ],
     "Salada": [
-        "acelga, alface, e cenoura"
+        "abobrinha e chuchu "
     ],
     "Guarnição": [
-        "Cuscuz",
-        "(Contém Lactose)"
+        "Macarrão parafuso "
     ],
     "Acompanhamento": [
-        "Arroz branco",
-        "Arroz integral",
-        "Feijão carioca"
+        "Arroz branco ",
+        "arroz integral ",
+        "Feijão de corda "
     ],
     "Suco": [
-        "Acerola"
+        "Manga "
     ],
     "Sobremesa": [
-        "Doce",
-        "Mamão"
+        "Melancia ",
+        "Doce "
     ]
 }
