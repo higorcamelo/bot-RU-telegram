@@ -1,27 +1,27 @@
 {
     "Principal": [
-        "Carne acebolada ",
-        "Moqueca de peixe "
+        "vaca atolada ",
+        "frango xadrez "
     ],
     "Vegetariano": [
-        "Bolinho de grão de bico ao molho escuro "
+        "falafel ao molho de alho "
     ],
     "Salada": [
-        "acelga, couve manteiga e pepino "
+        "batata, chuchu e beterraba "
     ],
     "Guarnição": [
-        "Macarrão espaguete "
+        "macarrão parafuso "
     ],
     "Acompanhamento": [
-        "Arroz branco ",
-        "Arroz integral ",
-        "Feijão fardinho "
+        "arroz branco ",
+        "arroz integral ",
+        "feijão carioca "
     ],
     "Suco": [
-        "Cajá "
+        "cajá "
     ],
     "Sobremesa": [
-        "Mamão ",
-        "Doce "
+        "melão ",
+        "doce "
     ]
 }

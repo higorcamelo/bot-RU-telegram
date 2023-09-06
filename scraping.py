@@ -22,7 +22,7 @@ def acesso_site():
     
     option = Options()
     option.add_argument('-headless') 
-    driver = webdriver.Firefox() #Adicionar options depois
+    driver = webdriver.Firefox(options=option) #Adicionar options depois
     driver.get(url)
     
     # Aguarde o carregamento dinâmico (ajuste o tempo conforme necessário)
@@ -79,10 +79,82 @@ def formatar_json(json_original):
     return json_formatado #TODO: Reprogramar essa função para concatenar as observações de alérgenos 
 
 def montar_mensagem(refeicao='almoco'):
+    with open(f'{refeicao}.json', 'r', encoding='utf-8') as arquivo_json:
+        dados_cardapio = json.load(arquivo_json)
     if refeicao == 'almoco':
-        mensagem_cardapio = 'Bom dia, alunos'
+        mensagem_cardapio = """
+🍽️ Bom dia alunos! Hoje no cardápio do almoço teremos: 🕛
+
+Prato Principal:
+- {} 🍛
+- {} 🍲
+
+Opção Vegetariana:
+- {} 🌱
+
+Acompanhamentos:
+- {} 🍚
+- {} 🍚
+- {} 🍚
+
+Sobremesa:
+- {} 🍬
+- {} 🍈
+
+Suco:
+- {} 🍹
+
+Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos
+Aproveite a sua refeição e bom apetite! 😊
+E aí? JaBOT Al Mossar?
+""".format(
+    dados_cardapio['Principal'][0],
+    dados_cardapio['Principal'][1],
+    dados_cardapio['Vegetariano'][0],
+    dados_cardapio['Acompanhamento'][0],
+    dados_cardapio['Acompanhamento'][1],
+    dados_cardapio['Acompanhamento'][2],
+    dados_cardapio['Sobremesa'][0],
+    dados_cardapio['Sobremesa'][1],
+    dados_cardapio['Suco'][0]
+)
     else:
-        mensagem_cardapio = 'Boa tarde, alunos'
+        mensagem_cardapio = """
+🍽️ Boa tarde alunos! Hoje no cardápio do jantar teremos teremos: 🕕
+
+Prato Principal:
+- {} 🍛
+- {} 🍲
+
+Opção Vegetariana:
+- {} 🌱
+
+Acompanhamentos:
+- {} 🍚
+- {} 🍚
+- {} 🍚
+
+Sobremesa:
+- {} 🍬
+- {} 🍈
+
+Suco:
+- {} 🍹
+
+Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos
+Aproveite a sua refeição e bom apetite! 😊
+E aí? JaBOT Al Mossar?
+""".format(
+    dados_cardapio['Principal'][0],
+    dados_cardapio['Principal'][1],
+    dados_cardapio['Vegetariano'][0],
+    dados_cardapio['Acompanhamento'][0],
+    dados_cardapio['Acompanhamento'][1],
+    dados_cardapio['Acompanhamento'][2],
+    dados_cardapio['Sobremesa'][0],
+    dados_cardapio['Sobremesa'][1],
+    dados_cardapio['Suco'][0]
+)
         
     return mensagem_cardapio
 
