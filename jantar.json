@@ -1,27 +1,27 @@
 {
     "Principal": [
-        "Suíno ao molho barbecue ",
-        "Frango grelhado "
+        "isca suína grelhada acebolada ",
+        "frango ao molho ferrugem "
     ],
     "Vegetariano": [
-        "Fricassê de lentilha "
+        "torta de soja com legumes "
     ],
     "Salada": [
-        "abobrinha e chuchu "
+        "vinagrete "
     ],
     "Guarnição": [
-        "Macarrão parafuso "
+        "cuscuz "
     ],
     "Acompanhamento": [
-        "Arroz branco ",
+        "arroz branco ",
         "arroz integral ",
-        "Feijão de corda "
+        "feijão de corda "
     ],
     "Suco": [
-        "Manga "
+        "cajú "
     ],
     "Sobremesa": [
-        "Melancia ",
-        "Doce "
+        "banana ",
+        "doce "
     ]
 }

@@ -34,7 +34,7 @@ def main() -> None:
     # Registrar os manipuladores de comandos
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler('cardapioAlmoco', force_almoco))
-    application.add_handler(CommandHandler('cardapioAlmoco', force_jantar))
+    application.add_handler(CommandHandler('cardapioJantar', force_jantar))
 
     # Executar o bot
     application.run_polling(allowed_updates=Update.ALL_TYPES)
