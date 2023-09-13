@@ -1,0 +1,27 @@
+{
+    "Principal": [
+        "Feijoada ",
+        "Isca de frango acebolada "
+    ],
+    "Vegetariano": [
+        "Jardineira de lentilha "
+    ],
+    "Salada": [
+        "Vinagrete "
+    ],
+    "Guarnição": [
+        "Farofa "
+    ],
+    "Acompanhamento": [
+        "Arroz branco ",
+        "Arroz integral ",
+        "Feijão preto "
+    ],
+    "Suco": [
+        "Goiaba "
+    ],
+    "Sobremesa": [
+        "Laranja ",
+        "Doce "
+    ]
+}

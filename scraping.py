@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.firefox.options import Options
 from datetime import datetime, timedelta
 import json
+from config import urlRU
 
 
 def acesso_site():
@@ -18,7 +19,7 @@ def acesso_site():
 
     # Formate a data no formato 'YYYY-MM-DD'
     data_formatada = data_atual.strftime('%Y-%m-%d')
-    url = 'https://www.ufc.br/restaurante/cardapio/5-restaurante-universitario-de-quixada/' + data_formatada
+    url = urlRU + data_formatada
     
     option = Options()
     option.add_argument('-headless') 
@@ -79,7 +80,7 @@ def formatar_json(json_original):
     return json_formatado #TODO: Reprogramar essa função para concatenar as observações de alérgenos 
 
 def montar_mensagem(refeicao='almoco'):
-    with open(f'{refeicao}.json', 'r', encoding='utf-8') as arquivo_json:
+    with open(f'/cardapios/{refeicao}.json', 'r', encoding='utf-8') as arquivo_json:
         dados_cardapio = json.load(arquivo_json)
     if refeicao == 'almoco':
         mensagem_cardapio = """
@@ -135,8 +136,8 @@ Acompanhamentos:
 - {} 🍚
 
 Sobremesa:
-- {} 🍬
 - {} 🍈
+- {} 🍬
 
 Suco:
 - {} 🍹
@@ -166,10 +167,10 @@ def setup_scraping(refeicao='almoco'):
 
     if refeicao == 'almoco':
         cardapio = para_json(tabela_almoco)
-        arquivo_nome = 'almoco.json'
+        arquivo_nome = 'cardapios/almoco.json'
     else:
         cardapio = para_json(tabela_jantar)
-        arquivo_nome = 'jantar.json'
+        arquivo_nome = 'cardapios/jantar.json'
 
     with open(arquivo_nome, 'w', encoding='utf-8') as arquivo:
         json.dump(cardapio, arquivo, indent=4, ensure_ascii=False)
