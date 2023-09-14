@@ -80,7 +80,7 @@ def formatar_json(json_original):
     return json_formatado #TODO: Reprogramar essa função para concatenar as observações de alérgenos 
 
 def montar_mensagem(refeicao='almoco'):
-    with open(f'/cardapios/{refeicao}.json', 'r', encoding='utf-8') as arquivo_json:
+    with open(f'cardapios/{refeicao}.json', 'r', encoding='utf-8') as arquivo_json:
         dados_cardapio = json.load(arquivo_json)
     if refeicao == 'almoco':
         mensagem_cardapio = """
@@ -99,8 +99,8 @@ Acompanhamentos:
 - {} 🍚
 
 Sobremesa:
-- {} 🍬
 - {} 🍈
+- {} 🍬
 
 Suco:
 - {} 🍹
