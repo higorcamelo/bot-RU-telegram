@@ -1,0 +1,27 @@
+{
+    "Principal": [
+        "Salpicão de carne ",
+        "Vatapá de peixe "
+    ],
+    "Vegetariano": [
+        "Bolinho de ervilha espinafre e quinoa "
+    ],
+    "Salada": [
+        "Beterraba, chuchu e orégano "
+    ],
+    "Guarnição": [
+        "Macarrão parafuso "
+    ],
+    "Acompanhamento": [
+        "Arroz branco ",
+        "Arroz integral ",
+        "Feijão de corda "
+    ],
+    "Suco": [
+        "Cajá "
+    ],
+    "Sobremesa": [
+        "Laranja ",
+        "Doce "
+    ]
+}

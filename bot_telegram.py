@@ -1,8 +1,7 @@
 import logging
-import threading
-import datetime
+from apscheduler.schedulers.background import BackgroundScheduler
 from telegram import Update
-from telegram.ext import Application, CommandHandler, CallbackContext, JobQueue
+from telegram.ext import Application, CommandHandler, CallbackContext
 from scraping import montar_mensagem, setup_scraping
 from config import token_telegram
 
@@ -13,10 +12,15 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 # Global variable for menu switch
 switchMenu = False
 
+scheduler = BackgroundScheduler()
+
 # Function to execute scraping
 def execute_scraping():
     setup_scraping('almoco')
     setup_scraping('jantar')
+
+def schedule_scraping():
+    execute_scraping()
 
 # Command handler to start menu
 async def startMenu(update: Update, context: CallbackContext) -> None:
@@ -39,9 +43,10 @@ async def printDinner(update: Update, context: CallbackContext) -> None:
     await context.bot.send_message(chat_id=update.effective_chat.id, text=montar_mensagem('jantar'))
 
 # Function to send menu based on conditional scheduling
-def sendMenu(context: CallbackContext):
+def sendMenu(tipo_refeicao: str, context: CallbackContext):
     if switchMenu:
-        context.bot.send_message(chat_id=context.job.context, text=montar_mensagem(context.job.name))
+        montagem = montar_mensagem(tipo_refeicao)
+        context.bot.send_message(chat_id=update.effective_chat.id, text=montagem)
 
 def main() -> None:
     application = Application.builder().token(token_telegram).build()
@@ -52,38 +57,15 @@ def main() -> None:
     application.add_handler(CommandHandler('cardapio_almoco', printLunch))
     application.add_handler(CommandHandler('cardapio_jantar', printDinner))
 
-    # Get the JobQueue instance for scraping
-    scraping_job_queue: JobQueue = application.job_queue
+    scheduler.add_job(schedule_scraping, 'cron', day_of_week='mon-fri', hour=6, minute=00)
+    #scheduler.add_job(sendMenu, 'cron', args=['almoco'], day_of_week='mon-fri', hour=8, minute=52, context=application)
+    #cheduler.add_job(sendMenu, 'cron', args=['jantar'], day_of_week='mon-fri', hour=18, minute=0, context=application)
 
-    # Schedule the execute_scraping function from Monday to Friday at 6 AM
-    scraping_job_queue.run_daily(
-        execute_scraping,
-        days=(0, 1, 2, 3, 4),  # Monday to Friday
-        time=datetime.time(hour=19, minute=33, second=0),  # 6:00 AM
-    )
-
-    # Get separate JobQueue instances for lunch and dinner
-    lunch_job_queue: JobQueue = application.job_queue
-    dinner_job_queue: JobQueue = application.job_queue
-
-    # Schedule lunch menu sending at a specific time
-    lunch_job_queue.run_daily(
-        sendMenu,
-        days=(0, 1, 2, 3, 4),  # Monday to Friday
-        time=datetime.time(hour=12, minute=0, second=0),  # 12:00 PM
-        data='almoco',
-    )
-
-    # Schedule dinner menu sending at a specific time
-    dinner_job_queue.run_daily(
-        sendMenu,
-        days=(0, 1, 2, 3, 4),  # Monday to Friday
-        time=datetime.time(hour=18, minute=0, second=0),  # 6:00 PM
-        data='jantar',
-    )
+    # Start the scheduler
+    scheduler.start()
 
     # Run the bot
     application.run_polling(allowed_updates=Update.ALL_TYPES)
-    
+
 if __name__ == '__main__':
     main()
