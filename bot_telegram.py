@@ -47,10 +47,10 @@ def main() -> None:
     application = Application.builder().token(token_telegram).build()
 
     # Register command handlers
-    application.add_handler(CommandHandler("startMenu", startMenu))
-    application.add_handler(CommandHandler("stopMenu", stopMenu))
-    application.add_handler(CommandHandler('printLunch', printLunch))
-    application.add_handler(CommandHandler('printDinner', printDinner))
+    application.add_handler(CommandHandler("start_cardapio", startMenu))
+    application.add_handler(CommandHandler("stop_cardapio", stopMenu))
+    application.add_handler(CommandHandler('cardapio_almoco', printLunch))
+    application.add_handler(CommandHandler('cardapio_jantar', printDinner))
 
     # Get the JobQueue instance for scraping
     scraping_job_queue: JobQueue = application.job_queue

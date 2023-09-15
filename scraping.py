@@ -77,7 +77,7 @@ def formatar_json(json_original):
                 # Se não contém descrição, adicione o item atual e a descrição (se houver) ao JSON formatado
                 json_formatado[categoria].append(item + " " + descricao)
 
-    return json_formatado #TODO: Reprogramar essa função para concatenar as observações de alérgenos 
+    return json_formatado
 
 def montar_mensagem(refeicao='almoco'):
     with open(f'cardapios/{refeicao}.json', 'r', encoding='utf-8') as arquivo_json:
