@@ -22,7 +22,7 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Zip code
-      run: aws s3 cp s3://jabot.s3/bot-RU-telegram.zip
+      run: aws s3 cp s3://jabot.s3/bot-RU-telegram.zip ./bot-RU-telegram.zip
 
     - name: Deploy to Lambda
       run: |
