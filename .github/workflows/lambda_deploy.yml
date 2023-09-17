@@ -1,0 +1,34 @@
+name: Deploy to Lambda
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9  # Ajuste para a versão Python desejada
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Zip code
+      run: aws s3 cp s3://jabot.s3/bot-RU-telegram.zip
+
+    - name: Deploy to Lambda
+      run: |
+        aws lambda update-function-code \
+        --function-name jaBot_ru \
+        --zip-file fileb://bot-RU-telegram.zip
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
