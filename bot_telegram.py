@@ -1,5 +1,5 @@
 import logging
-import threading
+import pytz 
 import datetime
 from telegram import Update
 from telegram.ext import Application, CommandHandler, CallbackContext, JobQueue
@@ -7,7 +7,7 @@ from scraping import montar_mensagem, setup_scraping
 from config import token_telegram
 
 # Initialize logging
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO, filename= 'logging_bot.log')
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 ids = []
@@ -50,8 +50,8 @@ def main() -> None:
     # Register command handlers
     application.add_handler(CommandHandler("start_cardapio", startMenu))
     application.add_handler(CommandHandler("stop_cardapio", stopMenu))
-    application.add_handler(CommandHandler('cardapio_almoco', printLunch))
-    application.add_handler(CommandHandler('cardapio_jantar', printDinner))
+    application.add_handler(CommandHandler('almoco', printLunch))
+    application.add_handler(CommandHandler('jantar', printDinner))
 
     # Get the JobQueue instance for scraping
     scraping_job_queue: JobQueue = application.job_queue
@@ -63,27 +63,28 @@ def main() -> None:
     scraping_job_queue.run_daily(
         execute_scraping,
         days=(0, 1, 2, 3, 4),  # Monday to Friday
-        time=datetime.time(hour=19, minute=33, second=0),  # 6:00 AM
+        time=datetime.time(hour=6, minute=0, second=0, tzinfo=pytz.timezone('America/Fortaleza')),  # 6:00 AM
     )
 
     # Get separate JobQueue instances for lunch and dinner
     lunch_job_queue: JobQueue = application.job_queue
     dinner_job_queue: JobQueue = application.job_queue
+    
 
     # Schedule lunch menu sending at a specific time
     lunch_job_queue.run_daily(
         sendMenu,
-        days=(0, 1, 2, 3, 4),  # Monday to Friday
-        time=datetime.time(hour=12, minute=0, second=0),  # 12:00 PM
-        name='almoco',
+        days = (0, 1, 2, 3, 4),  # Monday to Friday
+        time = datetime.time(hour=17, minute=0, second=0, tzinfo=pytz.timezone('America/Fortaleza')),  # 12:00 PM
+        name = 'almoco',
     )
 
     # Schedule dinner menu sending at a specific time
     dinner_job_queue.run_daily(
         sendMenu,
-        days=(0, 1, 2, 3, 4),  # Monday to Friday
-        time=datetime.time(hour=18, minute=0, second=0),  # 6:00 PM
-        name='jantar',
+        days = (0, 1, 2, 3, 4),  # Monday to Friday
+        time = datetime.time(hour=16, minute=59, second=0, tzinfo=pytz.timezone('America/Fortaleza')),  # 6:00 PM
+        name = 'jantar',
     )
 
     # Run the bot
