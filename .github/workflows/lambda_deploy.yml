@@ -18,8 +18,8 @@ jobs:
       with:
         python-version: 3.9  # Ajuste para a versão Python desejada
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+    #- name: Install dependencies
+    #  run: pip install -r requirements.txt
 
     - name: Zip code
       run: aws s3 cp s3://jabot.s3/bot-RU-telegram.zip
