@@ -10,25 +10,24 @@ from config import token_telegram
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
-# Global variable for menu switch
-switchMenu = False
+ids = []
 
 # Function to execute scraping
-def execute_scraping():
+async def execute_scraping(context):
     setup_scraping('almoco')
     setup_scraping('jantar')
 
 # Command handler to start menu
 async def startMenu(update: Update, context: CallbackContext) -> None:
-    global switchMenu
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Opa! Sou o JaBOT Al Mossar. Agora você receberá o cardápio para almoço e jantar!")
-    switchMenu = True
+    if update.effective_chat.id not in ids:
+        ids.append(update.effective_chat.id)
 
 # Command handler to stop menu
 async def stopMenu(update: Update, context: CallbackContext) -> None:
-    global switchMenu
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Tudo bem, agora você deixará de receber o cardápio...")
-    switchMenu = False
+    if update.effective_chat.id in ids:
+        ids.pop(ids.index(update.effective_chat.id))
 
 # Command handler to print lunch menu
 async def printLunch(update: Update, context: CallbackContext) -> None:
@@ -39,9 +38,11 @@ async def printDinner(update: Update, context: CallbackContext) -> None:
     await context.bot.send_message(chat_id=update.effective_chat.id, text=montar_mensagem('jantar'))
 
 # Function to send menu based on conditional scheduling
-def sendMenu(context: CallbackContext):
-    if switchMenu:
-        context.bot.send_message(chat_id=context.job.context, text=montar_mensagem(context.job.name))
+async def sendMenu(context: CallbackContext):
+    if len(ids) > 0:
+        mensagem = montar_mensagem(context.job.name)
+        for chat_id in ids:
+            await context.bot.send_message(chat_id=chat_id, text=mensagem)
 
 def main() -> None:
     application = Application.builder().token(token_telegram).build()
@@ -54,6 +55,9 @@ def main() -> None:
 
     # Get the JobQueue instance for scraping
     scraping_job_queue: JobQueue = application.job_queue
+
+    # Execute one time to avoid errors
+    # scraping_job_queue.run_once(execute_scraping, 0)
 
     # Schedule the execute_scraping function from Monday to Friday at 6 AM
     scraping_job_queue.run_daily(
@@ -71,7 +75,7 @@ def main() -> None:
         sendMenu,
         days=(0, 1, 2, 3, 4),  # Monday to Friday
         time=datetime.time(hour=12, minute=0, second=0),  # 12:00 PM
-        data='almoco',
+        name='almoco',
     )
 
     # Schedule dinner menu sending at a specific time
@@ -79,7 +83,7 @@ def main() -> None:
         sendMenu,
         days=(0, 1, 2, 3, 4),  # Monday to Friday
         time=datetime.time(hour=18, minute=0, second=0),  # 6:00 PM
-        data='jantar',
+        name='jantar',
     )
 
     # Run the bot

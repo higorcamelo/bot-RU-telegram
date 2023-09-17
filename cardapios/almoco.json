@@ -1,0 +1,27 @@
+{
+    "Principal": [
+        "Suíno acebolado ",
+        "Cozido de frango com legumes "
+    ],
+    "Vegetariano": [
+        "Nuggets de soja com chia "
+    ],
+    "Salada": [
+        "Acelga, couve manteiga e pepino "
+    ],
+    "Guarnição": [
+        "Cuscuz "
+    ],
+    "Acompanhamento": [
+        "Arroz branco ",
+        "Arroz integral ",
+        "Feijão fradinho "
+    ],
+    "Suco": [
+        "Manga "
+    ],
+    "Sobremesa": [
+        "Banana ",
+        "Doce "
+    ]
+}
