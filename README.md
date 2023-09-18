@@ -4,7 +4,7 @@
 
 # JaBOT Al Mossar - Bot Telegram de Cardápio
 
-JaBOT Al Mossar é o seu assistente de refeições diárias no Telegram! Este bot oferece uma maneira conveniente de acessar o cardápio do almoço e do jantar, diretamente na palma da sua mão. Ele foi desenvolvido com carinho em Python e está hospedado na AWS para garantir que você e todos os alunos possam aproveitar as deliciosas opções de refeição a qualquer momento.
+JaBOT Al Mossar é o seu assistente de refeições diárias no Telegram! Este bot oferece uma maneira conveniente de acessar o cardápio do almoço e do jantar, diretamente na palma da sua mão. Ele foi desenvolvido com carinho em Python e está hospedado no Google Cloud Platform para garantir que você e todos os alunos possam aproveitar as deliciosas opções de refeição a qualquer momento.
 
 ## Como Usar
 
@@ -17,10 +17,6 @@ Siga estas etapas simples para começar:
 3. **Comandos Personalizados**: Se você quiser verificar o cardápio a qualquer momento, basta digitar `/almoco` para o almoço e `/jantar` para o jantar. O JaBOT responderá instantaneamente com as informações mais recentes.
 
 4. **Parar a Atualização**: Se por algum motivo você quiser parar de receber as atualizações diárias, basta digitar `/parar` a qualquer momento.
-
-## Hospedagem Confiável na AWS
-
-JaBOT Al Mossar é hospedado na Amazon Web Services (AWS), garantindo que ele esteja disponível 24/7 para atender às suas necessidades de cardápio. Com a infraestrutura confiável da AWS, você pode confiar que as atualizações diárias serão pontuais, não importa onde você esteja.
 
 ## Tecnologias Utilizadas
 
