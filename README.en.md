@@ -4,7 +4,7 @@
 
 # JaBOT Al Mossar - Telegram Menu Bot
 
-JaBOT Al Mossar is your daily meal assistant on Telegram! This bot provides a convenient way to access the lunch and dinner menu right in the palm of your hand. It has been lovingly developed in Python and is hosted on Google Cloud Platform to ensure that you and all students can enjoy the delicious meal options anytime.
+JaBOT Al Mossar is your daily meal assistant on Telegram! This bot provides a convenient way to access the lunch and dinner menu right in the palm of your hand. It has been lovingly developed in Python and eventually will be hosted on Amazon Web Service to ensure that you and all students can enjoy the delicious meal options anytime.
 
 ## How to Use
 
