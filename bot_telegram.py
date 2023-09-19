@@ -4,13 +4,26 @@ import datetime
 from telegram import Update
 from telegram.ext import Application, CommandHandler, CallbackContext, JobQueue
 from scraping import montar_mensagem, setup_scraping
-from config import token_telegram
+import config
+import os.path
+from pathlib import Path
+import json
 
 # Initialize logging
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO, filename= 'logging_bot.log')
-logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=config.logging_level, filename= config.logging_file)
+logging.getLogger("httpx").setLevel(config.logging_level)
 
 ids = []
+
+def save_ids():
+    with open('salvo/inscritos.json', 'w+') as arquivo:
+        json.dump(ids, arquivo, indent=4, ensure_ascii=False)
+
+def recover_ids():
+    if Path('salvo/inscritos.json').exists():
+        with open('salvo/inscritos.json', 'r+') as arquivo:
+            global ids
+            ids = json.load(arquivo)
 
 # Function to execute scraping
 async def execute_scraping(context):
@@ -22,12 +35,14 @@ async def startMenu(update: Update, context: CallbackContext) -> None:
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Opa! Sou o JaBOT Al Mossar. Agora você receberá o cardápio para almoço e jantar!")
     if update.effective_chat.id not in ids:
         ids.append(update.effective_chat.id)
+        save_ids()
 
 # Command handler to stop menu
 async def stopMenu(update: Update, context: CallbackContext) -> None:
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Tudo bem, agora você deixará de receber o cardápio...")
     if update.effective_chat.id in ids:
         ids.pop(ids.index(update.effective_chat.id))
+        save_ids()
 
 # Command handler to print lunch menu
 async def printLunch(update: Update, context: CallbackContext) -> None:
@@ -45,7 +60,10 @@ async def sendMenu(context: CallbackContext):
             await context.bot.send_message(chat_id=chat_id, text=mensagem)
 
 def main() -> None:
-    application = Application.builder().token(token_telegram).build()
+    os.makedirs(os.path.join('salvo'), exist_ok=True)
+    recover_ids()
+
+    application = Application.builder().token(config.token_telegram).build()
 
     # Register command handlers
     application.add_handler(CommandHandler("start_cardapio", startMenu))
@@ -57,7 +75,7 @@ def main() -> None:
     scraping_job_queue: JobQueue = application.job_queue
 
     # Execute one time to avoid errors
-    # scraping_job_queue.run_once(execute_scraping, 0)
+    scraping_job_queue.run_once(execute_scraping, 2)
 
     # Schedule the execute_scraping function from Monday to Friday at 6 AM
     scraping_job_queue.run_daily(
@@ -75,7 +93,7 @@ def main() -> None:
     lunch_job_queue.run_daily(
         sendMenu,
         days = (0, 1, 2, 3, 4),  # Monday to Friday
-        time = datetime.time(hour=17, minute=0, second=0, tzinfo=pytz.timezone('America/Fortaleza')),  # 12:00 PM
+        time = datetime.time(hour=10, minute=37, second=0, tzinfo=pytz.timezone('America/Fortaleza')),
         name = 'almoco',
     )
 
@@ -83,7 +101,7 @@ def main() -> None:
     dinner_job_queue.run_daily(
         sendMenu,
         days = (0, 1, 2, 3, 4),  # Monday to Friday
-        time = datetime.time(hour=16, minute=59, second=0, tzinfo=pytz.timezone('America/Fortaleza')),  # 6:00 PM
+        time = datetime.time(hour=16, minute=30, second=0, tzinfo=pytz.timezone('America/Fortaleza')),
         name = 'jantar',
     )
 

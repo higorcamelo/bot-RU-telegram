@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  app:
+    image: bot-ru
+    network_mode: host
+    volumes:
+      - ./salvo:/usr/src/app/salvo
+    environment:
+      TOKEN_TELEGRAM: 6301269003:AAFhnZHg0EQ_vUrKg0yfAUSqRT8e6Ed-DUw
+      URL_RU: https://www.ufc.br/restaurante/cardapio/5-restaurante-universitario-de-quixada/
