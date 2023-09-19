@@ -14,6 +14,6 @@ RUN echo 'token_telegram = os.environ["TOKEN_TELEGRAM"]' >> config.py
 RUN echo 'urlRU = os.environ["URL_RU"]' >> config.py
 RUN echo 'logging_level = 20' >> config.py
 RUN echo 'logging_file = None' >> config.py
-RUN echo 'scraping_hour = os.environ["SCRAPING_HOUR"]' >> config.py
+RUN echo 'scraping_hour = int(os.environ["SCRAPING_HOUR"])' >> config.py
 
 CMD ["python", "./bot_telegram.py"]
