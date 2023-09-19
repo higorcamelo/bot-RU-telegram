@@ -9,3 +9,4 @@ services:
     environment:
       TOKEN_TELEGRAM: <seu_token>
       URL_RU: <url>
+      SCRAPING_HOUR: <hora>
