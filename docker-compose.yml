@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    image: bot-ru
+    network_mode: host
+    volumes:
+      - ./salvo:/usr/src/app/salvo
+    environment:
+      TOKEN_TELEGRAM: <seu_token>
+      URL_RU: <url>
+      SCRAPING_HOUR: <hora>
