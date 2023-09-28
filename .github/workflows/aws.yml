@@ -1,22 +1,16 @@
-name: Push to EC2
+name: Deploy EC2
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
-  deploy:
-    name: Deploy to EC2
+  EC2-Deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout the files
-      uses: actions/checkout@v3
-
-    - name: Copy files with SSH
-      uses: easingthemes/ssh-deploy@main
-      env:
-        SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-        ARGS: "-rltgoDzvO --delete"
-        SOURCE: "./"
-        REMOTE_HOST: ${{secrets.REMOTE_HOST}}
-        REMOTE_USER: ${{secrets.REMOTE_USER}}
-        TARGET: ${{secrets.TARGET_DIR}}
+      - id: deploy
+        uses: bitovi/github-actions-deploy-docker-to-ec2@v0.5.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_default_region: us-east-1
+          dot_env: ${{ secrets.DOT_ENV }}
