@@ -3,10 +3,12 @@ version: '3'
 services:
   app:
     image: bot-ru
-    network_mode: host
+    network_mode: "container:vpnclient_gluetun_1"
+    restart: unless-stopped
     volumes:
-      - ./salvo:/usr/src/app/salvo
+      - ./salvo:/usr/src/app/salvo:z
+      - ./cardapios:/usr/src/app/cardapios:z
     environment:
-      TOKEN_TELEGRAM: <seu_token>
-      URL_RU: <url>
-      SCRAPING_HOUR: <hora>
+      TOKEN_TELEGRAM: "6620123474:AAGeUyXPu3fCcsKKT2y0sHly0uWQYp6aAgg"
+      URL_RU: "https://www.ufc.br/restaurante/cardapio/5-restaurante-universitario-de-quixada/"
+      SCRAPING_HOUR: 9

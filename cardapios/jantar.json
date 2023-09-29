@@ -1,13 +1,13 @@
 {
     "Principal": [
-        "Salpicão de carne ",
+        "Paçoca ",
         "Vatapá de peixe "
     ],
     "Vegetariano": [
-        "Bolinho de ervilha espinafre e quinoa "
+        "Omelete de linhaça "
     ],
     "Salada": [
-        "Beterraba, chuchu e orégano "
+        "Abobrinha e chuchu "
     ],
     "Guarnição": [
         "Macarrão parafuso "
@@ -18,10 +18,10 @@
         "Feijão de corda "
     ],
     "Suco": [
-        "Cajá "
+        "Manga "
     ],
     "Sobremesa": [
-        "Laranja ",
+        "Melancia ",
         "Doce "
     ]
 }

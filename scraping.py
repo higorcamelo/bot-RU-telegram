@@ -70,7 +70,7 @@ def formatar_json(json_original):
         descricao = ""  # Inicialize a descrição como uma string vazia
 
         for item in itens:
-            if '(' in item:
+            if str(item).startswith('('):
                 # Se o item contém uma descrição entre parênteses, armazene-o na variável 'descricao'
                 descricao = item
             else:
