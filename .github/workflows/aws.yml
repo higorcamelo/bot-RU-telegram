@@ -1,15 +1,22 @@
 name: Deploy EC2
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  EC2-Deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - id: deploy
-        uses: bitovi/github-actions-deploy-docker-to-ec2@v0.5.0
-        with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_default_region: us-east-1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Pull Docker image
+        run: docker pull your-docker-username/bot-ru:latest
+
+      - name: Run Docker container
+        run: docker run -d --name bot-ru-telegram higorcamelo/bot-ru:latest
+
+
