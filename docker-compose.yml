@@ -6,7 +6,5 @@ services:
     network_mode: host
     volumes:
       - ./salvo:/usr/src/app/salvo
-    environment:
-      TOKEN_TELEGRAM: <seu_token>
-      URL_RU: <url>
-      SCRAPING_HOUR: <hora>
+    env_file:
+      - ./config.py
