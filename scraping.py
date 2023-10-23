@@ -5,7 +5,6 @@ from datetime import datetime, timedelta
 import json
 from config import urlRU
 
-
 def acesso_site():
     # Obtenha a data atual
     data_atual = datetime.now()
@@ -80,83 +79,69 @@ def formatar_json(json_original):
     return json_formatado
 
 def montar_mensagem(refeicao='almoco'):
+    mensagem_cardapio = ""
+
     with open(f'cardapios/{refeicao}.json', 'r', encoding='utf-8') as arquivo_json:
         dados_cardapio = json.load(arquivo_json)
-    if refeicao == 'almoco':
-        mensagem_cardapio = """
-🍽️ Bom dia alunos! Hoje no cardápio do almoço teremos: 🕛
+
+    if dados_cardapio:
+        if refeicao == 'almoco':
+            mensagem_cardapio = f"""
+🍽️ Bom dia alunos! Hoje ({dados_cardapio['DataScraping']}) no cardápio do almoço teremos: 🕛
 
 Prato Principal:
-- {} 🍛
-- {} 🍲
+- {dados_cardapio['Principal'][0]}
+- {dados_cardapio['Principal'][1]}
 
 Opção Vegetariana:
-- {} 🌱
+- {dados_cardapio['Vegetariano'][0]}
 
 Acompanhamentos:
-- {} 🍚
-- {} 🍚
-- {} 🍚
+- {dados_cardapio['Acompanhamento'][0]}
+- {dados_cardapio['Acompanhamento'][1]}
+- {dados_cardapio['Acompanhamento'][2]}
 
 Sobremesa:
-- {} 🍈
-- {} 🍬
+- {dados_cardapapio['Sobremesa'][0]}
+- {dados_cardapio['Sobremesa'][1]}
 
 Suco:
-- {} 🍹
+- {dados_cardapio['Suco'][0]}
 
 Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos
 Aproveite a sua refeição e bom apetite! 😊
 E aí? JaBOT Al Mossar?
-""".format(
-    dados_cardapio['Principal'][0],
-    dados_cardapio['Principal'][1],
-    dados_cardapio['Vegetariano'][0],
-    dados_cardapio['Acompanhamento'][0],
-    dados_cardapio['Acompanhamento'][1],
-    dados_cardapio['Acompanhamento'][2],
-    dados_cardapio['Sobremesa'][0],
-    dados_cardapio['Sobremesa'][1],
-    dados_cardapio['Suco'][0]
-)
+"""
+        else:
+            mensagem_cardapio = f"""
+🍽️ Boa tarde alunos! Hoje ({dados_cardapio['DataScraping']}) no cardápio do jantar teremos: 🕕
+
+Prato Principal:
+- {dados_cardapio['Principal'][0]}
+- {dados_cardapio['Principal'][1]}
+
+Opção Vegetariana:
+- {dados_cardapio['Vegetariano'][0]}
+
+Acompanhamentos:
+- {dados_cardapio['Acompanhamento'][0]}
+- {dados_cardapio['Acompanhamento'][1]}
+- {dados_cardapio['Acompanhamento'][2]}
+
+Sobremesa:
+- {dados_cardapapio['Sobremesa'][0]}
+- {dados_cardapio['Sobremesa'][1]}
+
+Suco:
+- {dados_cardapio['Suco'][0]}
+
+Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos
+Aproveite a sua refeição e bom apetite! 😊
+E aí? JaBOT Al Mossar?
+"""
     else:
-        mensagem_cardapio = """
-🍽️ Boa tarde alunos! Hoje no cardápio do jantar teremos teremos: 🕕
+        mensagem_cardapio = "Lamento, aparentemente o cardápio de hoje não foi publicado."
 
-Prato Principal:
-- {} 🍛
-- {} 🍲
-
-Opção Vegetariana:
-- {} 🌱
-
-Acompanhamentos:
-- {} 🍚
-- {} 🍚
-- {} 🍚
-
-Sobremesa:
-- {} 🍈
-- {} 🍬
-
-Suco:
-- {} 🍹
-
-Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos
-Aproveite a sua refeição e bom apetite! 😊
-E aí? JaBOT Al Mossar?
-""".format(
-    dados_cardapio['Principal'][0],
-    dados_cardapio['Principal'][1],
-    dados_cardapio['Vegetariano'][0],
-    dados_cardapio['Acompanhamento'][0],
-    dados_cardapio['Acompanhamento'][1],
-    dados_cardapio['Acompanhamento'][2],
-    dados_cardapio['Sobremesa'][0],
-    dados_cardapio['Sobremesa'][1],
-    dados_cardapio['Suco'][0]
-)
-        
     return mensagem_cardapio
 
 def setup_scraping(refeicao='almoco'):
@@ -172,7 +157,7 @@ def setup_scraping(refeicao='almoco'):
         cardapio = para_json(tabela_jantar)
         arquivo_nome = 'cardapios/jantar.json'
 
+    cardapio['DataScraping'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
     with open(arquivo_nome, 'w', encoding='utf-8') as arquivo:
         json.dump(cardapio, arquivo, indent=4, ensure_ascii=False)
-
-

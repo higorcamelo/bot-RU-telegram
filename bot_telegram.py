@@ -30,6 +30,15 @@ async def execute_scraping(context):
     setup_scraping('almoco')
     setup_scraping('jantar')
 
+async def start(update: Update, context: CallbackContext) -> None:
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=
+                                   """Opa! Sou o JaBOT Al Mossar, seu bot para o cardápio do RU.
+                                   Você pode usar os seguintes comandos:
+                                   /start_cardapio - para começar a receber o cardápio, sempre às 10:40 para o almoço e 16:30 para o jantar
+                                   /stop_cardapio - para parar de receber o cardápio
+                                   /almoco - para receber o cardápio do almoço imeadiatamente
+                                   /jantar - para receber o cardápio do jantar imediatamente""")
+
 # Command handler to start menu
 async def startMenu(update: Update, context: CallbackContext) -> None:
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Opa! Sou o JaBOT Al Mossar. Agora você receberá o cardápio para almoço e jantar!")
@@ -66,10 +75,12 @@ def main() -> None:
     application = Application.builder().token(config.token_telegram).build()
 
     # Register command handlers
+    application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("start_cardapio", startMenu))
     application.add_handler(CommandHandler("stop_cardapio", stopMenu))
     application.add_handler(CommandHandler('almoco', printLunch))
     application.add_handler(CommandHandler('jantar', printDinner))
+    application.add_handler(CommandHandler('scraping', execute_scraping))
 
     # Get the JobQueue instance for scraping
     scraping_job_queue: JobQueue = application.job_queue
