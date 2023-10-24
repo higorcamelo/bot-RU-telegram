@@ -8,6 +8,7 @@ from config import urlRU
 def acesso_site():
     # Obtenha a data atual
     data_atual = datetime.now()
+    urlRU = 'https://www.ufc.br/restaurante/apresentacao'
 
     # Verifique se a data atual é um sábado (5) ou domingo (6)
     # Se for, subtrai um dia para obter a última sexta-feira (4)
@@ -15,15 +16,11 @@ def acesso_site():
         data_atual -= timedelta(days=1)
     elif data_atual.weekday() == 6:  # Domingo
         data_atual -= timedelta(days=2)
-
-    # Formate a data no formato 'YYYY-MM-DD'
-    data_formatada = data_atual.strftime('%Y-%m-%d')
-    url = urlRU + data_formatada
     
     option = Options()
     option.add_argument('-headless') 
     driver = webdriver.Firefox(options=option) #Adicionar options depois
-    driver.get(url)
+    driver.get(urlRU)
     
     # Aguarde o carregamento dinâmico (ajuste o tempo conforme necessário)
     driver.implicitly_wait(10)  # Espera até 10 segundos
@@ -102,7 +99,7 @@ Acompanhamentos:
 - {dados_cardapio['Acompanhamento'][2]}
 
 Sobremesa:
-- {dados_cardapapio['Sobremesa'][0]}
+- {dados_cardapio['Sobremesa'][0]}
 - {dados_cardapio['Sobremesa'][1]}
 
 Suco:
@@ -129,7 +126,7 @@ Acompanhamentos:
 - {dados_cardapio['Acompanhamento'][2]}
 
 Sobremesa:
-- {dados_cardapapio['Sobremesa'][0]}
+- {dados_cardapio['Sobremesa'][0]}
 - {dados_cardapio['Sobremesa'][1]}
 
 Suco:
@@ -157,7 +154,7 @@ def setup_scraping(refeicao='almoco'):
         cardapio = para_json(tabela_jantar)
         arquivo_nome = 'cardapios/jantar.json'
 
-    cardapio['DataScraping'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    cardapio['DataScraping'] = datetime.now().strftime('%d-%m-%Y')
 
     with open(arquivo_nome, 'w', encoding='utf-8') as arquivo:
         json.dump(cardapio, arquivo, indent=4, ensure_ascii=False)

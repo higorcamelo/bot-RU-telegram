@@ -1,27 +1,28 @@
 {
     "Principal": [
-        "Suíno acebolado ",
-        "Cozido de frango com legumes "
+        "Suíno ao molho escuro ",
+        "Isca de frango ao molho mostarda "
     ],
     "Vegetariano": [
-        "Nuggets de soja com chia "
+        "Grão de bico com macaxeira "
     ],
     "Salada": [
-        "Acelga, couve manteiga e pepino "
+        "Repolho, cenoura, abacaxi "
     ],
     "Guarnição": [
-        "Cuscuz "
+        "Macarrão parafuso "
     ],
     "Acompanhamento": [
         "Arroz branco ",
-        "Arroz integral ",
-        "Feijão fradinho "
+        "Arroz Integral ",
+        "Feijão branco "
     ],
     "Suco": [
-        "Manga "
+        "Goiaba "
     ],
     "Sobremesa": [
-        "Banana ",
+        "Melão ",
         "Doce "
-    ]
+    ],
+    "DataScraping": "23-10-2023"
 }

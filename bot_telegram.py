@@ -10,8 +10,8 @@ from pathlib import Path
 import json
 
 # Initialize logging
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=config.logging_level, filename= config.logging_file)
-logging.getLogger("httpx").setLevel(config.logging_level)
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO, filename= 'logging_bot.log')
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 ids = []
 
@@ -31,24 +31,27 @@ async def execute_scraping(context):
     setup_scraping('jantar')
 
 async def start(update: Update, context: CallbackContext) -> None:
-    await context.bot.send_message(chat_id=update.effective_chat.id, text=
-                                   """Opa! Sou o JaBOT Al Mossar, seu bot para o cardápio do RU.
-                                   Você pode usar os seguintes comandos:
-                                   /start_cardapio - para começar a receber o cardápio, sempre às 10:40 para o almoço e 16:30 para o jantar
-                                   /stop_cardapio - para parar de receber o cardápio
-                                   /almoco - para receber o cardápio do almoço imeadiatamente
-                                   /jantar - para receber o cardápio do jantar imediatamente""")
+    message = """
+Olá! Sou o JaBOT Al Mossar, seu bot para o cardápio do RU.
+
+Aqui estão os comandos disponíveis:
+/start_cardapio - para começar a receber o cardápio, programado para as 10:40 para o almoço e 16:30 para o jantar.
+/stop_cardapio - para parar de receber o cardápio.
+/almoco - para receber o cardápio do almoço imediatamente.
+/jantar - para receber o cardápio do jantar imediatamente.
+    """
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
 # Command handler to start menu
 async def startMenu(update: Update, context: CallbackContext) -> None:
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="Opa! Sou o JaBOT Al Mossar. Agora você receberá o cardápio para almoço e jantar!")
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="Feito! Agora você irá receber o cardápio às 10:40 para o almoço e 16:30 para o jantar.")
     if update.effective_chat.id not in ids:
         ids.append(update.effective_chat.id)
         save_ids()
 
 # Command handler to stop menu
 async def stopMenu(update: Update, context: CallbackContext) -> None:
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="Tudo bem, agora você deixará de receber o cardápio...")
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="Tudo bem, agora você deixará de receber o cardápio.")
     if update.effective_chat.id in ids:
         ids.pop(ids.index(update.effective_chat.id))
         save_ids()
@@ -104,7 +107,7 @@ def main() -> None:
     lunch_job_queue.run_daily(
         sendMenu,
         days = (0, 1, 2, 3, 4),  # Monday to Friday
-        time = datetime.time(hour=10, minute=37, second=0, tzinfo=pytz.timezone('America/Fortaleza')),
+        time = datetime.time(hour=10, minute=40, second=0, tzinfo=pytz.timezone('America/Fortaleza')),
         name = 'almoco',
     )
 

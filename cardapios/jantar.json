@@ -1,27 +1,28 @@
 {
     "Principal": [
-        "Salpicão de carne ",
-        "Vatapá de peixe "
+        "Carne acebolada ",
+        "Estrogonofe de Frango "
     ],
     "Vegetariano": [
-        "Bolinho de ervilha espinafre e quinoa "
+        "Panqueca de lentilha "
     ],
     "Salada": [
-        "Beterraba, chuchu e orégano "
+        "Acelga, alface e cenoura "
     ],
     "Guarnição": [
-        "Macarrão parafuso "
+        "Cuscuz "
     ],
     "Acompanhamento": [
         "Arroz branco ",
         "Arroz integral ",
-        "Feijão de corda "
+        "Feijão de carioca "
     ],
     "Suco": [
-        "Cajá "
+        "Acerola "
     ],
     "Sobremesa": [
-        "Laranja ",
+        "Mamão ",
         "Doce "
-    ]
+    ],
+    "DataScraping": "23-10-2023"
 }
