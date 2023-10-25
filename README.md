@@ -55,7 +55,7 @@ Todas as mudanças notáveis deste projeto serão documentadas nesta seção.
 - Agendamento para atualização automática do cardápio em dias úteis.
 - Envio automático de mensagens com o cardápio para os usuários.
 
-## [Versão 1.1.0] - 24/10/2023
+## [Versão 1.1.0] - 25/10/2023
 
 ### Adicionado
 
@@ -70,6 +70,7 @@ Todas as mudanças notáveis deste projeto serão documentadas nesta seção.
 ### Aprimorado
 
 - **Mensagens de Erro Aprimoradas**: Mensagens de erro agora são mais informativas, melhorando a experiência do usuário.
+- **Mensagens Reescritas**: As mensagens foram reescritas para melhorar a comunicação com os usuários, tornando-a mais dinâmica e confiável.
 - **Desempenho e Estabilidade**: Vários aprimoramentos gerais foram implementados para melhorar o desempenho e a estabilidade do bot.
 
 
