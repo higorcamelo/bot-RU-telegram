@@ -11,7 +11,6 @@ def acesso_site():
     global semCardapio
     # Obtenha a data atual
     data_atual = datetime.now()
-    urlRU = 'https://www.ufc.br/restaurante/apresentacao'
 
     # Verifique se a data atual é um sábado (5) ou domingo (6)
     # Se for, subtrai um dia para obter a última sexta-feira (4)
