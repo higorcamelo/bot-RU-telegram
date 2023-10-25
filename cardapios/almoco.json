@@ -1,28 +1,28 @@
 {
     "Principal": [
-        "Suíno ao molho escuro ",
-        "Isca de frango ao molho mostarda "
+        "Carne ao molho Ferrugem ",
+        "Frango cozido com legumes "
     ],
     "Vegetariano": [
-        "Grão de bico com macaxeira "
+        "Soja cozida com legumes "
     ],
     "Salada": [
-        "Repolho, cenoura, abacaxi "
+        "Batata, chuchu e beterraba "
     ],
     "Guarnição": [
-        "Macarrão parafuso "
+        "Pirão "
     ],
     "Acompanhamento": [
         "Arroz branco ",
         "Arroz Integral ",
-        "Feijão branco "
+        "Feijão carioca "
     ],
     "Suco": [
-        "Goiaba "
+        "Manga "
     ],
     "Sobremesa": [
-        "Melão ",
+        "Melancia ",
         "Doce "
     ],
-    "DataScraping": "23-10-2023"
+    "DataScraping": "24/10/23"
 }

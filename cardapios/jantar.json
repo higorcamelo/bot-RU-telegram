@@ -1,28 +1,28 @@
 {
     "Principal": [
-        "Carne acebolada ",
-        "Estrogonofe de Frango "
+        "Suíno acebolado ",
+        "Frango cozido com legumes "
     ],
     "Vegetariano": [
-        "Panqueca de lentilha "
+        "Bolinho de batata doce com grão de bico "
     ],
     "Salada": [
-        "Acelga, alface e cenoura "
+        "Vinagrete "
     ],
     "Guarnição": [
-        "Cuscuz "
+        "Farofa "
     ],
     "Acompanhamento": [
         "Arroz branco ",
         "Arroz integral ",
-        "Feijão de carioca "
+        "Feijão de  corda "
     ],
     "Suco": [
-        "Acerola "
+        "Caju "
     ],
     "Sobremesa": [
-        "Mamão ",
+        "Banana ",
         "Doce "
     ],
-    "DataScraping": "23-10-2023"
+    "DataScraping": "24/10/23"
 }

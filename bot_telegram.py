@@ -10,7 +10,7 @@ from pathlib import Path
 import json
 
 # Initialize logging
-logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO, filename= 'logging_bot.log')
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=config.logging_level, filename= config.logging_file)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 ids = []
