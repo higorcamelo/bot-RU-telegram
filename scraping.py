@@ -21,10 +21,10 @@ def acesso_site():
     
     option = Options()
     option.add_argument('-headless') 
-    driver = webdriver.Firefox(options=option) #Adicionar options depois
+    driver = webdriver.Firefox(options=option)
     driver.get(urlRU)
     
-    # Aguarde o carregamento dinâmico (ajuste o tempo conforme necessário)
+    # Aguarde o carregamento dinâmico
     driver.implicitly_wait(10)  # Espera até 10 segundos
 
     soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -86,7 +86,7 @@ def formatar_json(json_original):
 def montar_mensagem(refeicao='almoco'):
     mensagem_cardapio = ""
     if semCardapio:
-        mensagem_cardapio = "Lamento, não consegui acessar o cardápio de hoje ou este não foi postado 😔"
+        mensagem_cardapio = "Lamento, não consegui acessar o cardápio de hoje ou este não foi publicado 😔"
         return mensagem_cardapio
     else:
 

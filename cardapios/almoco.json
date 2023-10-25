@@ -1,28 +1,28 @@
 {
     "Principal": [
-        "Carne ao molho Ferrugem ",
-        "Frango cozido com legumes "
+        "Feijoada ",
+        "Frango Grelhado "
     ],
     "Vegetariano": [
-        "Soja cozida com legumes "
+        "Salpicão de Lentilha "
     ],
     "Salada": [
-        "Batata, chuchu e beterraba "
+        "Vinagrete "
     ],
     "Guarnição": [
-        "Pirão "
+        "Farofa "
     ],
     "Acompanhamento": [
         "Arroz branco ",
         "Arroz Integral ",
-        "Feijão carioca "
+        "Feijão preto "
     ],
     "Suco": [
-        "Manga "
+        "Acerola "
     ],
     "Sobremesa": [
-        "Melancia ",
+        "Laranja ",
         "Doce "
     ],
-    "DataScraping": "24/10/23"
+    "DataScraping": "25/10/23"
 }

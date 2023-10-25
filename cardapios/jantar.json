@@ -1,28 +1,28 @@
 {
     "Principal": [
-        "Suíno acebolado ",
-        "Frango cozido com legumes "
+        "Cozido de carne com macaxeira ",
+        "Isca de frango com ervas finas "
     ],
     "Vegetariano": [
-        "Bolinho de batata doce com grão de bico "
+        "Soja refogada com macaxeira e batata frita "
     ],
     "Salada": [
-        "Vinagrete "
+        "Batata inglesa, chuchu, cenoura e ervilha "
     ],
     "Guarnição": [
-        "Farofa "
+        "Macarrão espaguete "
     ],
     "Acompanhamento": [
         "Arroz branco ",
         "Arroz integral ",
-        "Feijão de  corda "
+        "Feijão branco "
     ],
     "Suco": [
-        "Caju "
+        "Goiaba "
     ],
     "Sobremesa": [
-        "Banana ",
+        "Melão ",
         "Doce "
     ],
-    "DataScraping": "24/10/23"
+    "DataScraping": "25/10/23"
 }

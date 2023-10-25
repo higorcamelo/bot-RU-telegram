@@ -90,7 +90,6 @@ def main() -> None:
     application.add_handler(CommandHandler('almoco', printLunch))
     application.add_handler(CommandHandler('jantar', printDinner))
     application.add_handler(CommandHandler("comentario", enviar_comentario))
-    application.add_handler(CommandHandler('scraping', execute_scraping))
     
     # Get the JobQueue instance for scraping
     scraping_job_queue: JobQueue = application.job_queue
