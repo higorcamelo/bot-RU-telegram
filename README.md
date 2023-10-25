@@ -55,4 +55,21 @@ Todas as mudanças notáveis deste projeto serão documentadas nesta seção.
 - Agendamento para atualização automática do cardápio em dias úteis.
 - Envio automático de mensagens com o cardápio para os usuários.
 
+## [Versão 1.1.0] - 24/10/2023
+
+### Adicionado
+
+- **Comando /start**: Agora os usuários podem obter informações iniciais sobre as funcionalidades do bot com o comando /start.
+- **Comentários e Sugestões**: Foi adicionada a funcionalidade de enviar comentários e sugestões aos desenvolvedores diretamente pelo bot.
+- **Data Atual no Cardápio**: A data atual foi incluída na mensagem do cardápio, proporcionando informações claras sobre a data da refeição.
+
+### Corrigido
+
+- **Tratamento de Falha no Cardápio**: Problemas ao lidar com a ausência de dados de cardápio foram corrigidos, garantindo uma experiência mais confiável para os usuários. Agora uma mensagem informando os usuários é enviada.
+
+### Aprimorado
+
+- **Mensagens de Erro Aprimoradas**: Mensagens de erro agora são mais informativas, melhorando a experiência do usuário.
+- **Desempenho e Estabilidade**: Vários aprimoramentos gerais foram implementados para melhorar o desempenho e a estabilidade do bot.
+
 
