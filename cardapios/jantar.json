@@ -1,28 +1,27 @@
 {
     "Principal": [
-        "Cozido de carne com macaxeira ",
-        "Isca de frango com ervas finas "
+        "Salpicão de carne ",
+        "Vatapá de peixe "
     ],
     "Vegetariano": [
-        "Soja refogada com macaxeira e batata frita "
+        "Bolinho de ervilha espinafre e quinoa "
     ],
     "Salada": [
-        "Batata inglesa, chuchu, cenoura e ervilha "
+        "Beterraba, chuchu e orégano "
     ],
     "Guarnição": [
-        "Macarrão espaguete "
+        "Macarrão parafuso "
     ],
     "Acompanhamento": [
         "Arroz branco ",
         "Arroz integral ",
-        "Feijão branco "
+        "Feijão de corda "
     ],
     "Suco": [
-        "Goiaba "
+        "Cajá "
     ],
     "Sobremesa": [
-        "Melão ",
+        "Laranja ",
         "Doce "
-    ],
-    "DataScraping": "25/10/23"
+    ]
 }
