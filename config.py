@@ -1,7 +1,6 @@
-token_telegram = '123456789:AAGci8-HFUIHIOUFhnsohasdhsakddjhasdhiods' #PROD
-token_telegram_dev = '987654321:dsfjlkLKFJDSKLNfdjqakljdslkadddd' #DEV
-urlRU = 'https://www.ufc.br/restaurante/cardapio/5-restaurante-universitario-de-quixada/'
-scraping_hour = 6
-id_feedback_chat = -456987123321
+token_telegram = '<MEU ID DO TELEGRAM>'
+urlRU = 'MINHAURL.com.br'
 logging_level = 20
-logging_file = 'bot.log'
+logging_file = None
+scraping_hour = 9
+id_feedback_chat = -1234567890
