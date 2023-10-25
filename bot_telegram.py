@@ -2,7 +2,7 @@ import logging
 import pytz 
 import datetime
 from telegram import Update
-from telegram.ext import Application, CommandHandler, CallbackContext, JobQueue
+from telegram.ext import Application, CommandHandler, CallbackContext, JobQueue, MessageHandler, filters
 from scraping import montar_mensagem, setup_scraping
 import config
 import os.path
@@ -35,10 +35,11 @@ async def start(update: Update, context: CallbackContext) -> None:
 Olá! Sou o JaBOT Al Mossar, seu bot para o cardápio do RU.
 
 Aqui estão os comandos disponíveis:
-/start_cardapio - para começar a receber o cardápio, programado para as 10:40 para o almoço e 16:30 para o jantar.
-/stop_cardapio - para parar de receber o cardápio.
-/almoco - para receber o cardápio do almoço imediatamente.
-/jantar - para receber o cardápio do jantar imediatamente.
+/start_cardapio - comece a receber automaticamente o cardápio, programado para as 10:40 para o almoço e 16:30 para o jantar.
+/stop_cardapio - pare de receber o cardápio programado.
+/almoco - receba imediatamente o cardápio do almoço.
+/jantar - receba imediatamente o cardápio do jantar.
+/comentario <seu comentário> - envie um comentário anônimo para o desenvolvedor. Faça sugestões, críticas, elogios, etc.
     """
     await context.bot.send_message(chat_id=update.effective_chat.id, text=message)
 
@@ -63,6 +64,12 @@ async def printLunch(update: Update, context: CallbackContext) -> None:
 # Command handler to print dinner menu
 async def printDinner(update: Update, context: CallbackContext) -> None:
     await context.bot.send_message(chat_id=update.effective_chat.id, text=montar_mensagem('jantar'))
+    
+async def enviar_comentario(update: Update, context: CallbackContext):
+    comentario = update.message.text.split(' ', 1)[1]
+    feedback_chat_id = config.id_feedback_chat
+    await context.bot.send_message(chat_id=feedback_chat_id, text=f"Comentário de um usuário:\n\n{comentario}")
+
 
 # Function to send menu based on conditional scheduling
 async def sendMenu(context: CallbackContext):
@@ -83,6 +90,7 @@ def main() -> None:
     application.add_handler(CommandHandler("stop_cardapio", stopMenu))
     application.add_handler(CommandHandler('almoco', printLunch))
     application.add_handler(CommandHandler('jantar', printDinner))
+    application.add_handler(CommandHandler("comentario", enviar_comentario))
     application.add_handler(CommandHandler('scraping', execute_scraping))
 
     # Get the JobQueue instance for scraping

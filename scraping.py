@@ -85,7 +85,6 @@ def formatar_json(json_original):
 
 def montar_mensagem(refeicao='almoco'):
     mensagem_cardapio = ""
-    print(semCardapio)
     if semCardapio:
         mensagem_cardapio = "Lamento, não consegui acessar o cardápio de hoje ou este não foi postado 😔"
         return mensagem_cardapio
