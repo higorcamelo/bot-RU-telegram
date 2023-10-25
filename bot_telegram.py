@@ -11,7 +11,7 @@ import json
 
 # Initialize logging
 logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=config.logging_level, filename= config.logging_file)
-logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpx").setLevel(config.logging_level)
 
 ids = []
 
