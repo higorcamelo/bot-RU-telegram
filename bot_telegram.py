@@ -69,13 +69,6 @@ async def enviar_comentario(update: Update, context: CallbackContext):
     comentario = update.message.text.split(' ', 1)[1]
     feedback_chat_id = config.id_feedback_chat
     await context.bot.send_message(chat_id=feedback_chat_id, text=f"Comentário de um usuário:\n\n{comentario}")
-    
-async def unknown_command(update, context):
-    await context.bot.send_message(
-        chat_id=update.effective_chat.id,
-        text="Desculpe, não entendi esse comando. Se precisar de ajuda, use /start para ver os comandos disponíveis."
-    )
-
 
 # Function to send menu based on conditional scheduling
 async def sendMenu(context: CallbackContext):
@@ -98,7 +91,6 @@ def main() -> None:
     application.add_handler(CommandHandler('jantar', printDinner))
     application.add_handler(CommandHandler("comentario", enviar_comentario))
     application.add_handler(CommandHandler('scraping', execute_scraping))
-    application.add_handler(CommandHandler(filters.command, unknown_command))
     
     # Get the JobQueue instance for scraping
     scraping_job_queue: JobQueue = application.job_queue
