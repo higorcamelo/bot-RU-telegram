@@ -1,27 +1,28 @@
 {
     "Principal": [
-        "Suíno acebolado ",
-        "Cozido de frango com legumes "
+        "Feijoada ",
+        "Frango Grelhado "
     ],
     "Vegetariano": [
-        "Nuggets de soja com chia "
+        "Salpicão de Lentilha "
     ],
     "Salada": [
-        "Acelga, couve manteiga e pepino "
+        "Vinagrete "
     ],
     "Guarnição": [
-        "Cuscuz "
+        "Farofa "
     ],
     "Acompanhamento": [
         "Arroz branco ",
-        "Arroz integral ",
-        "Feijão fradinho "
+        "Arroz Integral ",
+        "Feijão preto "
     ],
     "Suco": [
-        "Manga "
+        "Acerola "
     ],
     "Sobremesa": [
-        "Banana ",
+        "Laranja ",
         "Doce "
-    ]
+    ],
+    "DataScraping": "25/10/23"
 }
