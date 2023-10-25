@@ -45,17 +45,24 @@ Aqui estão os comandos disponíveis:
 
 # Command handler to start menu
 async def startMenu(update: Update, context: CallbackContext) -> None:
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="Feito! Agora você irá receber o cardápio às 10:40 para o almoço e 16:30 para o jantar.")
-    if update.effective_chat.id not in ids:
-        ids.append(update.effective_chat.id)
+    chat_id = update.effective_chat.id
+    if chat_id not in ids:
+        ids.append(chat_id)
         save_ids()
+        await context.bot.send_message(chat_id=chat_id, text="✅ Feito! Agora você irá receber o cardápio às 10:40 para o almoço e 16:30 para o jantar.")
+    else:
+        await context.bot.send_message(chat_id=chat_id, text="👍 Você já está inscrito para receber o cardápio. Aguarde as próximas atualizações! 📅")
 
 # Command handler to stop menu
 async def stopMenu(update: Update, context: CallbackContext) -> None:
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="Tudo bem, agora você deixará de receber o cardápio.")
-    if update.effective_chat.id in ids:
-        ids.pop(ids.index(update.effective_chat.id))
+    chat_id = update.effective_chat.id
+    if chat_id in ids:
+        ids.remove(chat_id)
         save_ids()
+        await context.bot.send_message(chat_id=chat_id, text="Tudo bem, agora você deixará de receber o cardápio. Caso mude de ideia, basta usar /start_cardapio novamente.")
+    else:
+        await context.bot.send_message(chat_id=chat_id, text="🤷‍♂️ Você não está inscrito para receber o cardápio. Caso deseje se inscrever, use /start_cardapio. 😉")
+
 
 # Command handler to print lunch menu
 async def printLunch(update: Update, context: CallbackContext) -> None:
