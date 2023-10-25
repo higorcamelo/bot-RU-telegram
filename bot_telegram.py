@@ -107,7 +107,7 @@ def main() -> None:
     # Schedule the execute_scraping function from Monday to Friday at 6 AM
     scraping_job_queue.run_daily(
         execute_scraping,
-        days=(0, 1, 2, 3, 4),  # Monday to Friday
+        days=(1, 2, 3, 4, 5),  # Monday to Friday
         time=datetime.time(hour=config.scraping_hour, minute=0, second=0, tzinfo=pytz.timezone('America/Fortaleza')),  # 6:00 AM
     )
 
@@ -119,7 +119,7 @@ def main() -> None:
     # Schedule lunch menu sending at a specific time
     lunch_job_queue.run_daily(
         sendMenu,
-        days = (0, 1, 2, 3, 4),  # Monday to Friday
+        days = (1, 2, 3, 4, 5),  # Monday to Friday
         time = datetime.time(hour=10, minute=40, second=0, tzinfo=pytz.timezone('America/Fortaleza')),
         name = 'almoco',
     )
@@ -127,7 +127,7 @@ def main() -> None:
     # Schedule dinner menu sending at a specific time
     dinner_job_queue.run_daily(
         sendMenu,
-        days = (0, 1, 2, 3, 4),  # Monday to Friday
+        days = (1, 2, 3, 4, 5),  # Monday to Friday
         time = datetime.time(hour=16, minute=30, second=0, tzinfo=pytz.timezone('America/Fortaleza')),
         name = 'jantar',
     )
