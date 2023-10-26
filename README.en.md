@@ -55,3 +55,22 @@ All notable changes to this project will be documented in this section.
 - Schedule for automatic menu updates on weekdays.
 - Automatic sending of menu messages to users.
 
+## [Version 1.1.0] - 10/25/2023
+
+### Added
+
+- **/start Command**: Users can now get initial information about the bot's features using the /start command.
+- **Comments and Suggestions**: The ability to send comments and suggestions to the developers directly through the bot has been added.
+- **Current Date in Menu**: The current date has been included in the menu message, providing clear information about the meal date.
+
+### Fixed
+
+- **Menu Failure Handling**: Issues in handling the absence of menu data have been fixed, ensuring a more reliable user experience. Users now receive a message informing them.
+
+### Improved
+
+- **Enhanced Error Messages**: Error messages are now more informative, improving the user experience.
+- **Messages Rewritten**: Messages have been rewritten to enhance communication with users, making it more dynamic and reliable.
+- **Performance and Stability**: Various general enhancements have been implemented to improve the bot's performance and stability.
+
+

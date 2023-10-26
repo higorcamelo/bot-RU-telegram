@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  app:
+    image: bot-ru
+    network_mode: "container:${VPN_CONTAINER_NAME}"
+    restart: unless-stopped
+    pull_policy: build
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ${VOLUME_PATH}:/usr/src/app/salvo:z
+    environment:
+      TOKEN_TELEGRAM: ${TOKEN_TELEGRAM}
+      URL_RU: ${URL_RU}
+      SCRAPING_HOUR: ${SCRAPING_HOUR}
+      ID_FEEDBACK_CHAT: ${ID_FEEDBACK_CHAT}
