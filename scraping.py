@@ -32,6 +32,7 @@ def acesso_site():
     tabela_jantar = soup.find('table', class_='refeicao jantar')
     
     if tabela_almoco is not None or tabela_jantar is not None:
+        semCardapio = False
         driver.quit()
         return tabela_almoco, tabela_jantar
     else:
