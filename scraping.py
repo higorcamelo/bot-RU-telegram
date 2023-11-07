@@ -110,6 +110,12 @@ def montar_mensagem(refeicao='almoco'):
     - {dados_cardapio['Acompanhamento'][0]} 🍚
     - {dados_cardapio['Acompanhamento'][1]} 🍚
     - {dados_cardapio['Acompanhamento'][2]} 🍚
+    
+    Salada:
+    - {dados_cardapio['Salada'][0]} 🥗
+    
+    Guarnição:
+    - {dados_cardapio['Guarnição'][0]} 🍟
 
     Sobremesa:
     - {dados_cardapio['Sobremesa'][0]} 🍈
@@ -118,8 +124,9 @@ def montar_mensagem(refeicao='almoco'):
     Suco:
     - {dados_cardapio['Suco'][0]} 🍹
 
-    Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos
+    Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos.
     Aproveite a sua refeição e bom apetite! 😊
+    
     E aí? JaBOT Al Mossar?
     """
             else:
@@ -137,6 +144,12 @@ def montar_mensagem(refeicao='almoco'):
     - {dados_cardapio['Acompanhamento'][0]} 🍚
     - {dados_cardapio['Acompanhamento'][1]} 🍚
     - {dados_cardapio['Acompanhamento'][2]} 🍚
+    
+    Salada:
+    - {dados_cardapio['Salada'][0]} 🥗
+    
+    Guarnição:
+    - {dados_cardapio['Guarnição'][0]} 🍟
 
     Sobremesa:
     - {dados_cardapio['Sobremesa'][0]} 🍈
@@ -147,6 +160,7 @@ def montar_mensagem(refeicao='almoco'):
 
     Atenção, tenha cuidado com alérgenos, confira os ingredientes dos pratos
     Aproveite a sua refeição e bom apetite! 😊
+    
     E aí? JaBOT Al Mossar?
     """
 
